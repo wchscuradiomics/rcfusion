@@ -1,0 +1,9 @@
+diff_thresholds = [0.1 0.05 0.01];
+corr_thresholds = [0.8 0.6];
+grid = mesh(diff_thresholds, corr_thresholds); % the length of grid is length(diff_thresholds) * length(corr_thresholds)
+
+Two-sample t-tests for significance tests of difference, remove non-discriminative features:
+If the p-value for feature i exceeds threshold S, feature i is considered non-discriminative. 
+
+Fisher’s correlation coefficients for analysis of correlation coefficients, remove redundant featurs:
+If the correlation coefficient between features i and j exceeds threshold C, and the average correlation coefficient for feature i > the average correlation coefficient for feature j, then remove feature i, else remove feature j.

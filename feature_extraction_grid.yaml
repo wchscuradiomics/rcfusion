@@ -1,0 +1,76 @@
+# [1] van Griethuysen J. J. M., Fedorov A., Parmar C., et al. Computational Radiomics System to Decode the Radiographic Phenotype[J]. Cancer Research, 2017, 77(21): e104-e107. https://pyradiomics.readthedocs.io/en/latest/index.html
+# [2] Zwanenburg A., Vallieres M., Abdalah M. A., et al. The image biomarker standardization initiative: standardized quantitative radiomics for high-throughput image-based phenotyping[J]. Radiology, 2020, 295(2): 328-338.
+
+imageType:
+  Original: {}
+  LoG:
+    sigma: [0.5, 1.0, 1.5, 2.0, 2.5] 
+  Wavelet: 
+    start_level: 0
+    binCount: 16 # investigated 16, 32; choose one from binCount and binWidth 
+    # binWidth: 8 # investigated 4, 8; choose one from binCount and binWidth
+    level: 2
+    wavelet: {} # investigated ['haar','dmey', 'sym[2-9]','db[2-9]','coif[1-5]', 'bior[1.1, 1.3, 1.5, 2.2, 2.4, 2.6, 2.8, 3.1, 3.3, 3.5, 3.7, 3.9, 4.4, 5.5, 6.8]', 'rbio[1.1, 1.3, 1.5, 2.2, 2.4, 2.6, 2.8, 3.1, 3.3, 3.5, 3.7, 3.9, 4.4, 5.5, 6.8]']
+  Square: {}
+  SquareRoot: {} 
+  Logarithm: {} 
+  Exponential: {}
+  Gradient: {} 
+      
+featureClass:  # all features are included by default
+  shape:
+  firstorder:
+  glcm: # disable SumAverage and MCC (long calculation time and computational instability) by specifying other GLCM features.
+    - 'Autocorrelation'
+    - 'JointAverage'
+    - 'ClusterProminence'
+    - 'ClusterShade'
+    - 'ClusterTendency'
+    - 'Contrast'
+    - 'Correlation'
+    - 'DifferenceAverage'
+    - 'DifferenceEntropy'
+    - 'DifferenceVariance'
+    - 'JointEnergy'
+    - 'JointEntropy'
+    - 'Imc1'
+    - 'Imc2'    
+    - 'Idm'
+    - 'Idmn'
+    - 'Id'
+    - 'Idn'
+    - 'InverseVariance'
+    - 'MaximumProbability'
+    - 'SumEntropy'
+    - 'SumSquares'
+  glrlm:
+  glszm:
+  gldm:
+  ngtdm:
+
+setting:
+  # Normalization:      # not need for CT
+
+  # Resampling:         
+  interpolator: 'sitkBSpline' 
+  resampledPixelSpacing: [0.5, 0.5, 2.5]
+  padDistance: 10
+
+  # Mask validation:
+  minimumROIDimensions: 2
+  minimumROISize: 25
+
+  # Image discretization:   # The ideal number of bins is in the order of 16-128 bins.
+  binWidth: 8 # investigated 8, 4; choose one from binCount and binWidth  
+  # binCount: 16 # investigated 16, 32; choose one from binCount and binWidth 
+
+  # first order specific settings:
+  voxelArrayShift: 1000     # To prevent negative values from being squared and from calculating binWidth. Usually 1000 for CT.
+ 
+  # Resegmentation, comment them for default 
+  preCrop: false
+  resegmentRange: [0, 128]
+  resegmentMode: 'absolute'
+
+  # Distance to neighbouronly affects the GLCM and NGTDM feature classes. The GLSZM and GLRLM feature classes use a fixed distance of 1 (infinity norm) to define neighbours.
+  distances: [1]
