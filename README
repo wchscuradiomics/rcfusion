@@ -11,3 +11,5 @@ rcfusion
 10. rfexxx.m: RFE
 11. stdgaxxx.m: STDGA
 12. swrxxx.m: SWR
+
+Refer to xxxexperiment.m for a starting point.
