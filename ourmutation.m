@@ -1,5 +1,7 @@
 function children = ourmutation(parents,POP,util)
 
+if ~isequal(util.X,POP), error('No consistent Population.'); end
+
 nvars = width(POP);
 children = zeros(length(parents),nvars);
 for i=1:length(parents)

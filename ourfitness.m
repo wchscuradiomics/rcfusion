@@ -13,7 +13,7 @@ function fitnesses = ourfitness(X,RAD,CLN,labels,cvcvp,util)
 % the number of candidate features and the (m-1)- and m-th features are X-ray Tube Current and KVP values.
 
 util.X = X; % current population X
-szlocal = util.param.our.szlocal;
+% szlocal = util.param.our.szlocal;
 generation = util.generation + 1;
 radconrithreshold = util.param.our.radconrithreshold;
 clnoption = util.param.our.clnoption;
@@ -43,7 +43,7 @@ parfor i=1:height(X) % variables for parallel computing -> suffix '4par'
   NEW = [radscores CLN];
   [newsubset,B2,fitinfo2] = fs4new(NEW,labels,cvcvp,alpha,clnoption);
  
-  % calculate contribution and fitness
+  % selecting input variables to construct a nomogram and calculating contribution and fitness
   if newsubset(1) ~= 1 || length(lclsubset) < 4, continue; end  
   [nom,cvscores] = lrm(NEW(:,newsubset),labels,hasintercept,cvcvp,true);
   % [~,~,~,cvauc] = perfcurve(labels,cvscores,1);

@@ -13,7 +13,7 @@ function fitnesses = ablfitness(X,RAD,CLN,labels,cvcvp,util) % used for GLSP (ab
 % the number of candidate features and the (m-1)- and m-th features are X-ray Tube Current and KVP values.
 
 util.X = X; % current population X
-% szlocal = util.param.abl.szlocal; % size of the local space
+% szlocal = util.param.abl.szlocal;
 idfmax = util.param.abl.idfmax;
 generation = util.generation + 1;
 clnoption = util.param.abl.clnoption;

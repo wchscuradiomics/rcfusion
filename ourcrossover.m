@@ -1,5 +1,5 @@
 function xoverkids=ourcrossover(parents,POP,util)
-%xoverkids=ourcrossover
+%xoverkids=ourcrossover(parents,POP,util)
 %
 % POP: a popsize-by-nvars matrix representing this (the current) population.
 %
@@ -10,9 +10,8 @@ function xoverkids=ourcrossover(parents,POP,util)
 % % how many parents will we need to complete the population?
 % nParents = 2 * nXoverKids + nMutateKids;
 %
-% Randomly pair up two individuals from the parents to produce offspring, requiring that the two individuals cannot be the same
-% (the presence of repeated indexes in the parents indicates that they can team up with multiple other individuals to produce
-% offspring);
+% Generate offspring by randomly pairing two individuals from the parents, requiring that the two individuals are not the same. 
+% The parents contain duplicate indices, indicating that they can be paired with multiple other individuals to produce offspring.
 
 if ~isequal(util.X,POP), error('No consistent Population.'); end
 nvars = width(POP); % szlocal = util.param.our.szlocal;

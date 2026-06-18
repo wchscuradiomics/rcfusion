@@ -37,14 +37,14 @@ parfor i=1:height(X) % variables for parallel computing -> suffix '4par'
   NEW = [radscores CLN];
   [newsubset,B2,fitinfo2] = fs4new(NEW,labels,cvcvp,alpha,clnoption);
  
-  % calculate contribution and fitness
+  % selecting input variables to construct a nomogram and calculating contribution and fitness
   if newsubset(1)~=1, continue; end  
   [nom,cvscores] = lrm(NEW(:,newsubset),labels,hasintercept,cvcvp,true);
   % [~,~,~,cvauc] = perfcurve(labels,cvscores,1);
   [mcvauc,aucs] = meancvaucs(cvcvp,labels,cvscores);  
 
-  % vc = std(aucs)/mcvauc; if vc > 0.15, continue; end
-  fitnesses(i) = -(1-klcllen)*mcvauc - klcllen*(1-nlclvars/nradvars);  
+  % vc = std(aucs)/mcvauc; if vc > 0.15, continue; end 
+  fitnesses(i) = -(1-klcllen)*mcvauc - klcllen*(1-nlclvars/nradvars); % control the number of selected features
   % fitnesses(i) = -mcvauc; 
 end
 
