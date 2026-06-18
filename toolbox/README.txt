@@ -12,3 +12,7 @@ Rock Christian (2025). DeLong's test for AUC (https://www.mathworks.com/matlabce
 
 3. Mutual Information Computation
 Hanchuan Peng (2025). Mutual Information computation (https://www.mathworks.com/matlabcentral/fileexchange/14888-mutual-information-computation), MATLAB Central File Exchange. 检索时间: 2025/5/19.
+
+other toolbox:
+1) optimization: machine learning based on grid search
+2) utils: auxiliary functions
