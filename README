@@ -1,4 +1,6 @@
 rcfusion
+
+Refer to xxxexperiment.m for a starting point.
 1. ablxxx.m: GLSP (ablation experiment)
 2. ablrconxxx.m: FCM (ablation experiment)
 3. ablxmutxxx.m: RPP (ablation experiment)
@@ -11,5 +13,10 @@ rcfusion
 10. rfexxx.m: RFE
 11. stdgaxxx.m: STDGA
 12. swrxxx.m: SWR
+13. vifanalysis.m: Variance Inflation Factor analysis
+14. sensianalysis.m: sensitivity analyses for key parameters
+15. radexperiment.m: radiomics models using radiomic features only
+16. ml.m: machine learning models
+17. train_unet.py: train U-Net segmentation model
+18. reproducibility.m: experimental reproducibility
 
-Refer to xxxexperiment.m for a starting point.
